@@ -1,0 +1,3 @@
+.ul
+  - @questions.each_with_index do |question, index|
+    .li= link_to "Question #{index + 1}", question_path(question)

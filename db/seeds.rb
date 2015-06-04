@@ -16,7 +16,7 @@ animals = ['hedgehog',
 
 6.times do |i|
   6.times do |j|
-    image_url = "/animal-#{i+1}"
+    image_url = "/animal-#{i+1}.jpg"
     Question.create([
       { image: image_url, description: "Is this a #{animals[j]}?"}
     ])
