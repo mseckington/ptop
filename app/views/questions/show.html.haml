@@ -1,14 +1,23 @@
 = link_to 'Back to all questions', questions_path
 .div
-  = image_tag( @question.image, width: '300')
+  = image_tag( question.image, width: '300')
 .div
-  = @question.description
+  = question.description
 
-= form_for @answer, url: question_answers_path(@question) do |f|
-  = f.radio_button(:response, true)
-  = f.label(:response_true, "Yes")
-  = f.radio_button(:response, false)
-  = f.label(:response_false, "No")
-  = f.hidden_field(:user_id, { value: current_user.id })
-  = f.hidden_field(:question_id, { value: @question.id })
-  = f.submit "Submit answer"
+- if @answer.response.present?
+  = answer_response
+  .div
+    = yes_responses_count
+    people answered 'Yes'
+  .div
+    = no_responses_count
+    people answered 'No'
+- else
+  = form_for @answer, url: question_answers_path(question) do |f|
+    = f.radio_button(:response, true)
+    = f.label(:response_true, "Yes")
+    = f.radio_button(:response, false)
+    = f.label(:response_false, "No")
+    = f.hidden_field(:user_id, { value: current_user.id })
+    = f.hidden_field(:question_id, { value: question.id })
+    = f.submit "Submit answer"
