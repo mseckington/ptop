@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+animals = ['hedgehog',
+  'squirrel',
+  'goat',
+  'dog',
+  'cat',
+  'cow'
+]
+
+6.times do |i|
+  6.times do |j|
+    image_url = "/animal-#{i+1}"
+    Question.create([
+      { image: image_url, description: "Is this a #{animals[j]}?"}
+    ])
+  end
+end
+
+
